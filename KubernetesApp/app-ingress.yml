@@ -16,3 +16,13 @@ spec:
             name: app-service
             port: 
               number: 80
+  - host: frontend.10.71.130.147.nip.io
+    http:
+      paths:
+      - pathType: Prefix
+        path: /
+        backend:
+          service:
+            name: angular-inmueble-service
+            port: 
+              number: 80              
