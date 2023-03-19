@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: inmueble-app
+  name: angular-app
   namespace: app
 spec:
   selector:
@@ -15,10 +15,6 @@ spec:
     spec:
       containers:
       - name: angular-inmueble-app
-        image: paulmoscoso/angular-kubernetes-paul:v1.0
-        resources:
-          limits:
-            memory: "128Mi"
-            cpu: "500m"
+        image: paulmoscoso/angular-kubernetes-paul:v3.0
         ports:
         - containerPort: 80

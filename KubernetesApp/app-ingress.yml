@@ -2,11 +2,18 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: app-ingress
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt
   namespace: app
 spec:
+  tls:
+    - hosts:
+      - app.paulmoscosotech.com
+      - frontend.paulmoscosotech.com
+      secretName: testsecret-tls
   ingressClassName: nginx
   rules:
-  - host: app.10.71.130.147.nip.io
+  - host: app.paulmoscosotech.com
     http:
       paths:
       - pathType: Prefix
@@ -16,7 +23,7 @@ spec:
             name: app-service
             port: 
               number: 80
-  - host: frontend.10.71.130.147.nip.io
+  - host: frontend.paulmoscosotech.com
     http:
       paths:
       - pathType: Prefix
